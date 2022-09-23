@@ -1,0 +1,368 @@
+//
+// Grid styles
+//
+.grid {
+    figure{
+        .img_fluid_emp{
+            width: 70px;
+            height: 70px;
+        }
+    }
+    .border {
+        padding-left: 1px;
+    }
+    .h6{
+        color:$card-head-color;
+        font-size: $card-head-fsize;
+    }
+    .bg-gray-light{
+        background-color: $card_bg_color;
+        padding: $card_light_p;
+    }
+    table{
+        tr{
+            td{
+                color:$card-value-color;
+                font-size: $card-fsize;
+                line-height: 1.36;
+                &:first-child{
+                    color:$card-label-color;
+                }
+            }
+        }
+
+    }
+    .user-wrapper{
+        .user-inner{
+            figure{
+                .badge{
+                    width: $badge_w;
+                    height: $badge_h;
+                    border: solid $badge_border_size $white;
+                    bottom: 0;
+                    right: -5px;
+                }
+            }
+            .emp_property{
+                h6{
+                    font-size: $emp_position_size;
+                    font-weight: 500;
+                    line-height: 1.36;
+                    color: $cs-navy-blue;
+                }
+                p{
+                    font-size: $emp_property_size;
+                    font-weight: 500;
+                    line-height: 1.33;
+                    letter-spacing: 0.36px;
+                    color: $emp_property_color;
+                }
+            }
+        }
+        .user_info{
+            ul{
+                li{
+                    span{
+                        font-size: $user_info_size;
+                        line-height: 1.57;
+                        color: $user_info_color;
+                    }
+                }
+            }
+        }
+
+    }
+    .extra_info{
+        right: 0;
+        top: 1.5625rem;
+        z-index: 122;
+        min-width: 275px;
+    }
+    .bg-light{
+        i{
+            color:$card-value-color;
+            &:hover{
+                color:$dark;
+            }
+        svg{
+            @include svg($font-size-base,$font-size-base);
+           }
+        }
+    }
+    svg{
+        @include svg($font-size-base,$font-size-base);
+    }
+    .dropdown-menu{
+        top:$grid_dropdown_top;
+    }
+    .svg_circle_graph{
+        svg{
+            @include svg($svg_w,$svg_h);
+        }
+    }
+    .medalia-chart-svg svg{
+        width:  80%;
+        height: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+        text-align: center;
+        overflow: visible;
+        @media (min-width: 768px) and (max-width: 1024px) {
+            max-width: 170px;
+        }
+        @include media-breakpoint-down(sm) {
+            max-width: 230px;
+        }
+    }
+}
+/*
+* Setup Admin scss
+*/
+.admin_wrap{
+    .check{
+        top: $admin-action-top;
+        right: $admin-action-right;
+        svg{
+            @include svg($admin-action-icon-w,$admin-action-icon-h);
+        }
+    }
+    .icon{
+        width: 64px;
+        height: 64px;
+        svg{
+            @include svg($admin-icon-w,$admin-icon-h);
+        }
+    }
+    .admin_inner{
+        h5{
+            font-size: $admin-font-size;
+            color: $admin-font-color;
+        }
+        small{
+            font-size: $admin-desc-font-size;
+            color: $admin-desc-font-color;
+        }
+    }
+}
+.card {
+    .card-sm{
+        &:last-child{
+            .dropdown-menu{
+                top: -100%;
+        }
+    }
+}
+.card-header{
+    padding: $card_header_p;
+    font-size: $card_header_fsize;
+    border-bottom: 0;
+}
+    .filter {
+        svg{
+            @include svg($font-size-base,$font-size-base);
+        }
+    }
+    .dropdown-menu{
+        top:80%;
+    }
+    .card-body{
+
+        .collapse-content{
+            span{
+                .badge{
+                    background-color: $word_bg_color ;
+                    &.active{
+                        border: 1px solid $cs-gray;
+                    }
+                }
+            }
+        }
+        .counter{
+            h1{
+                color: $counter_color;
+            }
+            p{
+                font-size: $counter_label_fsize;
+            }
+            svg{
+                @include svg($counter_icon_w,$counter_icon_h);
+                color: $counter_icon_color;
+            }
+        }
+    }
+}
+//
+// Accordion
+//
+
+.accordion {
+  .acc_border{
+      border-top: 1px dotted!important;
+      width: 25px;
+  }
+  .badge_w{
+      width: 130px;
+  }
+    > .card {
+      overflow: visible!important;
+      border: 0!important;
+       
+    .card-header {
+        background-color: #f5fcff !important;
+        text-transform: uppercase;
+        padding: 0.5rem !important;
+        margin-top: 0.625rem!important;
+        margin-bottom: 0 !important;
+        font-size: 1rem;        
+        border: 1px solid rgba(0, 0, 0, 0.125)!important;        
+        div button i.text-muted {
+            color: #005392 !important;
+        }
+      }
+      .card-body{
+          padding: 0;
+          border: 1px solid #d7dcdf;
+          border-top: none;
+          .table{
+              .td{
+                  vertical-align: middle!important;
+              }
+          }
+      }
+    }
+    &.cs_obs{
+        .card-header {
+            padding: 0;
+          }
+          .card-body{
+              .badge {
+                  background-color: #fafafc;
+              }
+          }
+    }
+  }
+
+.grid{
+    .word_max_limit{
+        display: block;
+        width: 120px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+}
+
+//Early-bird-chart
+
+@include media-breakpoint-down(sm) {
+    .tabsb{
+        font-size: 0.75rem!important;
+    }
+}
+.tabsb{
+    font-size: 0.875rem;
+    @include media-breakpoint-up(lg) {
+        font-size: 0.70rem;
+    }
+    @include media-breakpoint-up(xl) {
+        font-size: 0.875rem;
+    }
+    span{
+        @include media-breakpoint-up(xl) {
+            margin-left: 0.5rem !important;
+            margin-right: 0.5rem !important;
+        }
+        @include media-breakpoint-up(lg) {
+            margin-left: 0.3rem!important;
+            margin-right: 0.3rem!important;
+        }
+    }
+    .active{
+        border-bottom: 2px solid $dark;
+    }
+}
+.card_body_light{
+    background-color: $sb-bgcolor;
+}
+
+// stylelint-disable selector-no-qualifying-type
+
+//
+// Base styles
+//
+%c_navyblue{
+    color: $white;
+    background-color: $cs-navy-blue;
+    border-color: $cs-navy-blue;
+}
+%c_seagreen{
+    background-color: $cs-sea-green;
+    border-color: $cs-sea-green;
+}
+%c_btnpadding{
+    padding: $cal_btn_px cal_btn_py;
+}
+.btn-navyblue, .btn-seagreen, .btn-magento, .weekdates {}
+.btn {
+    font-size: $form_btn_fsize;
+    @media (min-width: 992px) { 
+        min-width: 180px;
+    }
+    
+    &.btn-navyblue {
+       @extend %c_navyblue;
+        @include hover {
+            text-decoration: none;
+            @extend %c_navyblue;
+        }
+    }
+    &.btn-seagreen {
+        @extend %c_seagreen;
+        &:hover{
+            @extend %c_seagreen;
+        }
+    }
+    &.btn-magento {
+        background-color: $cs-magento;
+        border-color: $cs-magento;
+        &:hover {
+            background-color:$cs-luxury-magento;
+            border-color:$cs-luxury-magento;
+        }
+    }
+    &.btn-addsch{
+        font-size: $add_btn_size;
+        border: 1px solid $cs-navy-blue;
+        color: $cs-navy-blue;
+
+    }
+    &.btn-default{
+        background-color: $cs-default;
+        border-color: $cs-default;
+    }
+    &:focus,
+    &.focus {
+    outline: 0;
+    box-shadow: none;
+    }
+    svg{
+        @include svg($font-size-base,$font-size-base);
+        &:hover{
+            color:$dark;
+            fill:$dark;
+        }
+    }
+    &.disabled{
+        opacity: 0.1;
+    }
+}
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+    &:not(:disabled) {
+        outline: 0;
+        box-shadow: none;
+    }
+}
+

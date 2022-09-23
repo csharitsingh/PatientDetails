@@ -1,0 +1,202 @@
+<!-- <div [ngSwitch]="dataStatus">
+    <div *ngSwitchCase="dataStatusEnum.DataAvailable"> -->
+        <div class="card card-body border-0 p-0">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="page-header position-relative px-3 mb-3">
+                        <div class="title-heading">
+                            <h3 class="title-title text-uppercase text-primary">
+                                Patient Details
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8">
+
+                </div>
+            </div>
+        </div>
+        <div class="alert alert-success alert-dismissible fade show py-3" role="alert" *ngIf="isSaveSuccess"
+            [innerHTML]="successMsg">
+
+            <!-- <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="onCancel()">
+                <span aria-hidden="true">&times;</span>
+            </button> -->
+        </div>
+        <div class="card-rounded-0">
+            <div class="card-header bg-light">
+                <span class="text-uppercase text-navblue font-weight-bold">Patient Details</span>
+            </div>
+            <div class="card-body">
+                <div class="col-md-8 p-0">
+                    <form [formGroup]="detailForm" (ngSubmit)="onSubmit()" csFocusFirstInvalidField>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label>PatientID</label>
+                                <input type="text" autocomplete="off" class="form-control" formControlName="idPatient"
+                                    id="input-idPatient" [ngClass]="{ 'is-invalid' : isInvalid(idPatient) }"
+                                    [readOnly]="(recordId!=0) || isSaveSuccess">
+                                <!-- <div *ngIf="isInvalid(idPatient)">
+                                    <small class="alert alert-danger p-1" *ngIf="idPatient.errors?.required">
+                                        {{'idPatient' | translate}} {{'FIELD_REQUIRED' | translate}}
+                                    </small>
+                                </div> -->
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>{{'trialSiteId' | translate}}</label>
+                                <input type="text" autocomplete="off" class="form-control" formControlName="trialSiteId"
+                                    id="input-trialSiteId" [ngClass]="{ 'is-invalid' : isInvalid(trialSiteId) }"
+                                    [readOnly]="(recordId!=0) || isSaveSuccess">
+                                <!-- <div *ngIf="isInvalid(trialSiteId)">
+                                    <small class="alert alert-danger p-1" *ngIf="trialSiteId.errors?.required">
+                                        {{'trialSiteId' | translate}} {{'FIELD_REQUIRED' | translate}}
+                                    </small>
+                                </div> -->
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label>{{'idtipvis' | translate}}</label>
+                                <input type="text" autocomplete="off" class="form-control" formControlName="idtipvis"
+                                    id="input-idtipvis" [ngClass]="{ 'is-invalid' : isInvalid(idtipvis) }"
+                                    [readOnly]="(recordId!=0) || isSaveSuccess">
+                                <!-- <div *ngIf="isInvalid(idtipvis)">
+                                    <small class="alert alert-danger p-1" *ngIf="idtipvis.errors?.required">
+                                        {{'idtipvis' | translate}} {{'FIELD_REQUIRED' | translate}}
+                                    </small>
+                                </div> -->
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>{{'numPaz' | translate}}</label>
+                                <input type="text" autocomplete="off" class="form-control" formControlName="numPaz"
+                                    id="input-numPaz" [ngClass]="{ 'is-invalid' : isInvalid(numPaz) }"
+                                    [readOnly]="(recordId!=0) || isSaveSuccess">
+                                <!-- <div *ngIf="isInvalid(numPaz)">
+                                    <small class="alert alert-danger p-1" *ngIf="numPaz.errors?.required">
+                                        {{'numPaz' | translate}} {{'FIELD_REQUIRED' | translate}}
+                                    </small>
+                                </div> -->
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label>{{'age' | translate}}</label>
+                                <input type="text" autocomplete="off" class="form-control" formControlName="age"
+                                    id="input-age" [ngClass]="{ 'is-invalid' : isInvalid(age) }"
+                                    [readOnly]="(recordId!=0) || isSaveSuccess">
+                                <!-- <div *ngIf="isInvalid(age)">
+                                    <small class="alert alert-danger p-1" *ngIf="age.errors?.required">
+                                        {{'age' | translate}} {{'FIELD_REQUIRED' | translate}}
+                                    </small>
+                                </div> -->
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>{{'dataOfConsent' | translate}}</label>
+                                <div class="input-group">
+                                    <!-- <input class="form-control bg-white" ngbDatepicker
+                                        #demoDate1="ngbDatepicker">
+                                    <div class="input-group-append">
+                                        <button class="btn border calendar" (click)="demoDate1.toggle()" [disabled]="true"
+                                            type="button"></button>
+                                    </div> -->
+                                    <input class="form-control bg-white" placeholder="dd-mm-yyyy" id="input-dataOfConsent" ngbDatepicker
+                                    #dataOfConsentCommon="ngbDatepicker" [readOnly]="!dataOfConsent?.disabled" formControlName="dataOfConsent">
+                                  <div class="input-group-append">
+                                    <button class="btn border calendar" (click)="dataOfConsentCommon.toggle()" type="button"
+                                    [ngClass]="{ 'is-invalid' : isInvalid(dataOfConsent) }" [disabled]="dataOfConsent?.disabled"></button>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label>{{'gender' | translate}}</label>
+                                <input type="text" autocomplete="off" class="form-control" formControlName="gender"
+                                    id="input-gender" [ngClass]="{ 'is-invalid' : isInvalid(gender) }"
+                                    [readOnly]="(recordId!=0) || isSaveSuccess">
+                                <!-- <div *ngIf="isInvalid(gender)">
+                                    <small class="alert alert-danger p-1" *ngIf="gender.errors?.required">
+                                        {{'gender' | translate}} {{'FIELD_REQUIRED' | translate}}
+                                    </small>
+                                </div> -->
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>{{'educationId' | translate}}</label>
+                                <input type="text" autocomplete="off" class="form-control" formControlName="educationId"
+                                    id="input-educationId" [ngClass]="{ 'is-invalid' : isInvalid(educationId) }"
+                                    [readOnly]="(recordId!=0) || isSaveSuccess">
+                                <!-- <div *ngIf="isInvalid(educationId)">
+                                    <small class="alert alert-danger p-1" *ngIf="educationId.errors?.required">
+                                        {{'educationId' | translate}} {{'FIELD_REQUIRED' | translate}}
+                                    </small>
+                                </div> -->
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label>{{'semID' | translate}}</label>
+                                <input type="text" autocomplete="off" class="form-control" formControlName="semID"
+                                    id="input-semID" [ngClass]="{ 'is-invalid' : isInvalid(semID) }"
+                                    [readOnly]="(recordId!=0) || isSaveSuccess">
+                                <!-- <div *ngIf="isInvalid(semID)">
+                                    <small class="alert alert-danger p-1" *ngIf="semID.errors?.required">
+                                        {{'semID' | translate}} {{'FIELD_REQUIRED' | translate}}
+                                    </small>
+                                </div> -->
+                            </div>
+                            <div class="form-group col-md-6" *ngIf="recordId!=0">
+                                <label>{{'dailyCigarettesCount' | translate}}</label>
+                                <input type="text" autocomplete="off" class="form-control"
+                                    formControlName="dailyCigarettesCount" id="input-dailyCigarettesCount"
+                                    [readOnly]="(currentUser && (currentUser.userType === enumUserType.Sponsor ||
+                                    currentUser.userType === enumUserType.Monitor || currentUser.userType === enumUserType.Researcher || currentUser.userType === enumUserType.ResearcherWithNotification))"
+                                    [ngClass]="{ 'is-invalid' : isInvalid(dailyCigarettesCount) }">
+                                <div *ngIf="isInvalid(dailyCigarettesCount)">
+                                    <small class="alert alert-danger p-1" *ngIf="dailyCigarettesCount.errors?.required">
+                                        {{'dailyCigarettesCount' | translate}} {{'FIELD_REQUIRED' | translate}}
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-md-flex"
+                            *ngIf="currentUser && (currentUser.userType !== enumUserType.Sponsor) && (currentUser.userType !== enumUserType.Monitor)
+                        && !((currentUser.userType === enumUserType.Researcher) && (recordId !== 0)) && !((currentUser.userType === enumUserType.ResearcherWithNotification) && (recordId !== 0))">
+                            <button type="submit" *ngIf="!isSaveSuccess"
+                                class="btn rounded-0 btn-primary text-capitalize mr-3"
+                                [disabled]="submitted || !detailForm.dirty">
+                                <span *ngIf="submitted" class="spinner-border spinner-border-sm"></span>
+                                {{'BUTTON_SAVE' | translate }}
+                            </button>
+                            <button type="button" class="btn rounded-0 btn-primary text-capitalize mt-2 mt-md-0 mr-3"
+                                (click)="onCancel()">
+                                {{isSaveSuccess ? ('BUTTON_BACK' |translate) : ('BUTTON_CANCEL' |translate)}}
+                            </button>
+                            <button *ngIf="(id != 0)" type="button"
+                                class="btn rounded-0 btn-primary text-capitalize mt-2 mt-md-0"
+                                (click)="goToCRFForm(id)">
+                                {{'GO_TO_CRF' |translate}}
+                            </button>
+                        </div>
+                        <div class="d-md-flex" *ngIf="currentUser &&
+                        ((currentUser.userType === enumUserType.Sponsor) || (currentUser.userType === enumUserType.Monitor) || ((currentUser.userType === enumUserType.Researcher) && (recordId !== 0)) 
+                        || ((currentUser.userType === enumUserType.ResearcherWithNotification) && (recordId !== 0)))">
+                            <button type="button" class="btn rounded-0 btn-primary text-capitalize mt-2 mt-md-0 mr-3"
+                                (click)="onCancel()">
+                                {{'BUTTON_BACK' |translate }}
+                            </button>
+                            <button *ngIf="(id != 0)" type="button"
+                                class="btn rounded-0 btn-primary text-capitalize mt-2 mt-md-0"
+                                (click)="goToCRFForm(id)">
+                                {{'GO_TO_CRF' |translate}}
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <cs-loading *ngSwitchCase="dataStatusEnum.Fetching">
+    </cs-loading>
+    <cs-error-detail [errorDetail]="errorDetail" *ngSwitchCase="dataStatusEnum.Error">
+    </cs-error-detail>
+</div>
