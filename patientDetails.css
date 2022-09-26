@@ -51,14 +51,16 @@ span{
 .card-body{
     background: #f9f9f9;
     padding: 20px 20px 20px 20px;
-    text-align: left;
+    
+    z-index: 1;
+
 }
 
 .col-md-8{
     padding: 0;
     max-width: 66.666666%;
 }
-form{
+.form{
     display: block;
     margin-top: 0;
 
@@ -81,4 +83,9 @@ form{
 }
 label{
     padding: 10px;
+}
+
+input.text{
+    background: black;
+
 }
